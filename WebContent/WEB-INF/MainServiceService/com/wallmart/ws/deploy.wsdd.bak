@@ -1,0 +1,33 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from MainServiceService WSDL service -->
+
+  <service name="MainService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.wallmart.com"/>
+      <parameter name="wsdlServiceElement" value="MainServiceService"/>
+      <parameter name="schemaQualified" value="http://ws.wallmart.com"/>
+      <parameter name="wsdlServicePort" value="MainService"/>
+      <parameter name="className" value="com.wallmart.ws.MainServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="MainService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getRouteMoreCheap" qname="operNS:getRouteMoreCheap" xmlns:operNS="http://ws.wallmart.com" returnQName="retNS:getRouteMoreCheapReturn" xmlns:retNS="http://ws.wallmart.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://ws.wallmart.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:start" xmlns:pns="http://ws.wallmart.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:end" xmlns:pns="http://ws.wallmart.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:autonomy" xmlns:pns="http://ws.wallmart.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:priceGas" xmlns:pns="http://ws.wallmart.com" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getRouteMoreCheap"/>
+
+  </service>
+</deployment>

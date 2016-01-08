@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.wallmart.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.wallmart.com" xmlns:intf="http://ws.wallmart.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.wallmart.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getRouteMoreCheap">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="start" type="xsd:string"/>
+      <element name="end" type="xsd:string"/>
+      <element name="autonomy" type="xsd:int"/>
+      <element name="priceGas" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getRouteMoreCheapResponse">
+    <complexType>
+     <sequence>
+      <element name="getRouteMoreCheapReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getRouteMoreCheapResponse">
+
+      <wsdl:part element="impl:getRouteMoreCheapResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRouteMoreCheapRequest">
+
+      <wsdl:part element="impl:getRouteMoreCheap" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="MainService">
+
+      <wsdl:operation name="getRouteMoreCheap">
+
+         <wsdl:input message="impl:getRouteMoreCheapRequest" name="getRouteMoreCheapRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getRouteMoreCheapResponse" name="getRouteMoreCheapResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="MainServiceSoapBinding" type="impl:MainService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getRouteMoreCheap">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRouteMoreCheapRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRouteMoreCheapResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="MainServiceService">
+
+      <wsdl:port binding="impl:MainServiceSoapBinding" name="MainService">
+
+         <wsdlsoap:address location="http://localhost:8080/WebServiceProject/services/MainService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
